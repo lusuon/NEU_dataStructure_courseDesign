@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="apache-tomcat-9.0">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/ExperimentProject/web/WEB-INF/lib/apache-tomcat-9.0.11" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-io-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-fileupload-1.3.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/ExperimentProject/web/WEB-INF/lib/apache-tomcat-9.0.11/webapps/docs/appdev/sample/src" />
+      <root url="file://$PROJECT_DIR$/ExperimentProject/web/WEB-INF/lib/apache-tomcat-9.0.11/webapps/examples/WEB-INF/classes" />
+      <root url="file://$PROJECT_DIR$/ExperimentProject/web/WEB-INF/lib/apache-tomcat-9.0.11/webapps/examples/WEB-INF/jsp/applet" />
+      <root url="file://$PROJECT_DIR$/ExperimentProject/web/WEB-INF/lib/apache-tomcat-9.0.11/webapps/examples/jsp/plugin/applet" />
+    </SOURCES>
+  </library>
+</component>
