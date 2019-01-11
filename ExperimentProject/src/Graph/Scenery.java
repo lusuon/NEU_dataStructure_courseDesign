@@ -1,3 +1,6 @@
+package Graph;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -12,10 +15,12 @@ public class Scenery implements Comparable{
     private boolean known;//the status of the shortest path
     private Scenery path ;//the former of shortest path
     private int dist;
+    private ArrayList<Scenery> nodes;
 
     public Scenery(String n){
         this.name = n;
         this.adj = new LinkedList<Road>();
+        this.nodes = new ArrayList<Scenery>();
     }
 
     
@@ -59,6 +64,11 @@ public class Scenery implements Comparable{
     }
     public void setDist(int dist) {
         this.dist = dist;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName()+"  from  "+this.getPath()+"  (generate tree)";
     }
 
     @Override

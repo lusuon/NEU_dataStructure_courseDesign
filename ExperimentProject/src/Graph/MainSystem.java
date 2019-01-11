@@ -1,3 +1,5 @@
+package Graph;
+
 import java.io.*;
 import java.util.*;
 
@@ -32,7 +34,7 @@ public class MainSystem {
             Scenery toBeAdd = null;
 
 
-            //如果无城市，则添加
+            //如果无景点，则添加
             if (!added.contains(start)||!added.contains(end)) {
                 if (!added.contains(start)) {
                     added.add(start);
@@ -109,6 +111,50 @@ public class MainSystem {
         return matrix;
     }
 
+    public void prim(HashMap<String, Scenery> cityList, String start){
+        reset(cityList);
+        //prim
+        Scenery startScenery = cityList.get(start);
+        if(start==null) throw new NoSuchElementException();
+        PriorityQueue<Scenery> notKnown = new PriorityQueue<>();
+        startScenery.setDist(0);
+        //向堆加入所有节点
+        for (Map.Entry<String, Scenery> entry:cityList.entrySet()){
+            notKnown.add(entry.getValue());
+        }
+        while(notKnown.size()!=0){
+            Scenery selected = notKnown.poll();//离当前生成树最近的点
+            selected.setKnown(true);
+            //dv为v点连接到已知顶点最短边的权；
+            //path记录使v更新的最后节点
+            //更新v：需要修改
+            for (Road road:selected.getAdj()) {
+                //获取邻近的边，获取相邻点adj
+                Scenery adj = road.getGoal();
+                if(!adj.isKnown()){
+                    int newDist = road.getFee();//获取边长
+                    if (newDist<adj.getDist()){
+                        //更新边长
+                        adj.setDist(newDist);
+                        //更新来源
+                        adj.setPath(selected);
+
+                        //刷新adj在优先队列内的位置
+                        notKnown.remove(adj);
+                        notKnown.add(adj);
+                    }
+                }
+            }
+        }//prim 结束
+
+        //
+        for (Scenery s:cities) {
+            Scenery path = s.getPath();
+            if(path!=null){
+                cityList.get(path.getName())
+            }
+        }
+    }
 
     public String recover_route(HashMap<String, Scenery> cityList, String start, String end){
         int distance = 0;
@@ -175,6 +221,7 @@ public class MainSystem {
         MainSystem rs = new MainSystem();
         HashMap<String, Scenery> cityList = rs.load_services();
         rs.reset(cityList);
+        rs.prim(cityList,"Madrid");
 
         rs.OutputMatrix(cityList);
 

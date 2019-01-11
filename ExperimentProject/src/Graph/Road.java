@@ -1,3 +1,5 @@
+package Graph;
+
 /**
  * models a rail service from the rail system. 
  * This class contains public data members for a destination city, a fee, and a distance. 
